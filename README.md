@@ -1,3 +1,5 @@
+<img title=** alt= "ERD" src="./img/Lost_Ark_logo.png">
+
 # LB-Projekt: Lost Ark Homework Tracker
 
 - [LB-Projekt: Lost Ark Homework Tracker](#lb-projekt-lost-ark-homework-tracker)
