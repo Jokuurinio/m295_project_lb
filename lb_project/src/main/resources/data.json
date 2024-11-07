@@ -1,0 +1,57 @@
+{
+    "raids": [
+      {
+        "name": "Behemoth",
+        "itemLevel": 1620,
+        "gates": 2,
+        "gold": 18000
+      },
+      {
+        "name": "Thaemine",
+        "itemLevel": 1630,
+        "gates": 4,
+        "gold": 41000
+      },
+      {
+        "name": "Echidna",
+        "itemLevel": 1630,
+        "gates": 2,
+        "gold": 19500
+      },
+      {
+        "name": "Aegir",
+        "itemLevel": 1680,
+        "gates": 2,
+        "gold": 27000
+      }
+    ],
+    "dungeons": [
+      {
+        "name": "Chaos Dungeon",
+        "itemLevel": 1620
+      },
+      {
+        "name": "Kurzan Front 1",
+        "itemLevel": 1640
+      },
+      {
+        "name": "Kurzan Front 2",
+        "itemLevel": 1660
+      },
+      {
+        "name": "Kurzan Front 3",
+        "itemLevel": 1680
+      }
+    ],
+    "guardians": [
+      {
+        "name": "Hanumatan",
+        "itemLevel": 1620
+      },
+      {
+        "name": "Argeos",
+        "itemLevel": 1640
+      }
+    ]
+  }
+  
