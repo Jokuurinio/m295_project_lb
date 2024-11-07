@@ -1,4 +1,4 @@
-<img title=** alt= "ERD" src="./img/Lost_Ark_logo.png">
+<img title=** alt= "ERD" src="./ressources/img/Lost_Ark_logo.png">
 
 # LB-Projekt: Lost Ark Homework Tracker
 
@@ -25,7 +25,7 @@ Dieses Projekt stellt eine REST-API für das Spiel **Lost Ark** bereit, mit der 
 
 ## Entity Relationship Diagram
 
-<img title=** alt= "ERD" src="./img/Entity Relationship Diagram.png">
+<img title=** alt= "ERD" src="./ressources/img/Entity Relationship Diagram.png">
 
 ## Technische Anforderungen
 
