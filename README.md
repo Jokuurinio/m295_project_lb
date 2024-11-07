@@ -123,9 +123,11 @@ Stellen Sie sicher, dass alle Abhängigkeiten installiert sind, bevor Sie beginn
    mvn spring-boot:run
    ```
 
+   Beim ersten mal starten wird die Datenbank mit Dummy-Daten für `Raid`, `Dungeon` und `Guardian` befüllt. Dies vereinfacht die Erstellung der Charaktere zu beginn.
+
 5. **API-Endpunkte testen**
 
-   Verwenden Sie Insomnia oder cURL, um die API-Endpunkte zu testen. Beispiele für Testanfragen finden Sie im Abschnitt "REST-API Dokumentation".
+   Verwenden Sie Insomnia oder cURL, um die API-Endpunkte zu testen. Beispiele für Testanfragen finden Sie im Abschnitt "REST-API Dokumentation" oder kann mittels des `insomnia_config` file im `./resources/Insomnia/` Ordner in Insomnia ausgeführt werden.
 
 ## Testplan
 
