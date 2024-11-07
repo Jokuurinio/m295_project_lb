@@ -1,14 +1,24 @@
 package ch.wiss.m295.lb_project.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.List;
 
+import org.springframework.validation.annotation.Validated;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
+@Validated
 public class Guardian {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty(message = "Guardian needs to have a name.")
     private String name;
+
     private int itemLevel;
 
     public Long getId() {
@@ -43,6 +53,7 @@ public class Guardian {
         this.characters = characters;
     }
 
-    @OneToMany(mappedBy = "guardian")
+    @OneToMany(mappedBy = "guardian", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+@JsonIgnore
     private List<Character> characters;
 }

@@ -3,6 +3,7 @@ package ch.wiss.m295.lb_project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,9 @@ public class DungeonController {
     }
 
     @PostMapping
-    public Dungeon createDungeon(@RequestBody Dungeon dungeon) {
-        return dungeonRepository.save(dungeon);
+    public ResponseEntity<Dungeon> createDungeon(@RequestBody Dungeon dungeon) {
+                Dungeon savedDungeon = dungeonRepository.save(dungeon);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedDungeon);
     }
 
     @GetMapping("/{id}")

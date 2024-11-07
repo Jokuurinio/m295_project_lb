@@ -3,6 +3,7 @@ package ch.wiss.m295.lb_project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,9 @@ public class GuardianController {
     }
 
     @PostMapping
-    public Guardian createGuardian(@RequestBody Guardian guardian) {
-        return guardianRepository.save(guardian);
+    public ResponseEntity<Guardian> createGuardian(@RequestBody Guardian guardian) {
+        Guardian savedGuardian = guardianRepository.save(guardian);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedGuardian);
     }
 
     @GetMapping("/{id}")

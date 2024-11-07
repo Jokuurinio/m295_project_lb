@@ -1,6 +1,6 @@
 package ch.wiss.m295.lb_project.model;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface RaidRepository extends CrudRepository<Raid, Long> {
+public interface RaidRepository extends JpaRepository<Raid, Long> {
 }

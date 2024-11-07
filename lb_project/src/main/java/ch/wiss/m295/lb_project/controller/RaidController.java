@@ -3,6 +3,7 @@ package ch.wiss.m295.lb_project.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +23,9 @@ public class RaidController {
     }
 
     @PostMapping
-    public Raid createRaid(@RequestBody Raid raid) {
-        return raidRepository.save(raid);
+    public ResponseEntity<Raid> createRaid(@RequestBody Raid raid) {
+        Raid savedRaid = raidRepository.save(raid);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedRaid);
     }
 
     @GetMapping(path = "/{id}")

@@ -1,8 +1,7 @@
 package ch.wiss.m295.lb_project.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,33 +16,39 @@ public class CharacterController {
     private CharacterRepository characterRepository;
 
     @GetMapping
-    public List<Character> getAllCharacters() {
-        return (List<Character>) characterRepository.findAll();
+    public ResponseEntity<Iterable<Character>> getAllCharacters() {
+        Iterable<Character> character = null;
+		character = characterRepository.findAll();
+		return ResponseEntity.ok(character);
     }
 
     @PostMapping
-    public Character createCharacter(@RequestBody Character character) {
-        return characterRepository.save(character);
+    public ResponseEntity<Character> createCharacter(@RequestBody Character character) {
+                Character savedCharacter = characterRepository.save(character);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedCharacter);
     }
 
     @GetMapping("/{id}")
-    public Character getCharacterById(@PathVariable Long id) {
-        return characterRepository.findById(id).orElse(null);
+    public ResponseEntity<Character> getCharacterById(@PathVariable Long id) {
+        return characterRepository.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
-
+    
     @PutMapping("/{id}")
-    public Character updateCharacter(@PathVariable Long id, @RequestBody Character characterDetails) {
-        Character character = characterRepository.findById(id).orElse(null);
-        if (character != null) {
-            character.setName(characterDetails.getName());
-            character.setItemLevel(characterDetails.getItemLevel());
-            character.setCharacterClass(characterDetails.getCharacterClass());
-            character.setRaid(characterDetails.getRaid());
-            character.setDungeon(characterDetails.getDungeon());
-            character.setGuardian(characterDetails.getGuardian());
-            return characterRepository.save(character);
-        }
-        return null;
+    public ResponseEntity<Character> updateCharacter(@PathVariable Long id, @RequestBody Character characterDetails) {
+        return characterRepository.findById(id)
+            .map(character -> {
+                character.setName(characterDetails.getName());
+                character.setItemLevel(characterDetails.getItemLevel());
+                character.setCharacterClass(characterDetails.getCharacterClass());
+                character.setRaid(characterDetails.getRaid());
+                character.setDungeon(characterDetails.getDungeon());
+                character.setGuardian(characterDetails.getGuardian());
+                characterRepository.save(character);
+                return ResponseEntity.ok(character);
+            })
+            .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")

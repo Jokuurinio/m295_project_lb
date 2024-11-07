@@ -1,12 +1,29 @@
 # LB-Projekt: Lost Ark Homework Tracker
 
+- [LB-Projekt: Lost Ark Homework Tracker](#lb-projekt-lost-ark-homework-tracker)
+  - [Projektidee](#projektidee)
+  - [Entity Relationship Diagram](#entity-relationship-diagram)
+  - [Technische Anforderungen](#technische-anforderungen)
+  - [User Stories](#user-stories)
+  - [REST-API Dokumentation](#rest-api-dokumentation)
+    - [Rest-Schnittstellen](#rest-schnittstellen)
+      - [Characters](#characters)
+      - [Beispiel-JSON für POST und PUT](#beispiel-json-für-post-und-put)
+    - [Fehlerbehandlung und Validierung](#fehlerbehandlung-und-validierung)
+  - [Abhängigkeiten](#abhängigkeiten)
+  - [Installationsanleitung](#installationsanleitung)
+  - [Testplan](#testplan)
+  - [Selbstkritische Reflexion](#selbstkritische-reflexion)
+  - [Hilfestellungen und Quellen](#hilfestellungen-und-quellen)
+
+
 ## Projektidee
 
 Dieses Projekt stellt eine REST-API für das Spiel **Lost Ark** bereit, mit der Spieler eine To-Do-Liste für ihre Charaktere verwalten können. Jeder User verfügt über mindestens einen Charakter, mit welchem er diverse Aktivitäten durchführen kann. Ziel der Anwendung ist es, eine übersichtliche Ansicht über wöchentliche und tägliche Aufgaben zu schaffen. Die User können sich Informationen zu ihren Charakteren und Aufgaben anzeigen lassen, diese bearbeiten oder löschen.
 
 ## Entity Relationship Diagram
 
-*(Hier sollte das ERD-Diagramm eingefügt oder als Bild referenziert werden)*
+<img title=** alt= "ERD" src="./img/Entity Relationship Diagram.png">
 
 ## Technische Anforderungen
 
@@ -35,15 +52,20 @@ Dieses Projekt stellt eine REST-API für das Spiel **Lost Ark** bereit, mit der 
 
 ## REST-API Dokumentation
 
-### Endpunkte
+### Rest-Schnittstellen
+ 
+#### Characters
+ 
+| HTTP Request | Endpoint   | Beschreibung                                       |
+| :----------- | :--------- | -------------------------------------------------- |
+| GET          | /characters      | Liste aller Charaktere                       |
+| GET          | /characters/{id} | Info von spezifischen Charaktere             |
+| POST         | /characters      | Neuer Charakter erstellen                    |
+| PUT          | /characters/{id} | Charakter aktualisieren                      |
+| DELETE       | /characters/{id} | Charakter löschen                            |
 
-#### Charakter-Management
+Für die Kategorien `Raids`, `Guardians` und `Dungeons` muss der jeweilige Text nach dem `/` abgeändert werden. z.B `/raids` oder `/raids/{id}`
 
-- **GET /api/characters** - Alle Charaktere abrufen
-- **POST /api/characters** - Neuen Charakter hinzufügen
-- **GET /api/characters/{id}** - Charakter nach ID abrufen
-- **PUT /api/characters/{id}** - Bestehenden Charakter aktualisieren
-- **DELETE /api/characters/{id}** - Charakter löschen
 
 #### Beispiel-JSON für POST und PUT
 
@@ -60,7 +82,7 @@ Dieses Projekt stellt eine REST-API für das Spiel **Lost Ark** bereit, mit der 
 
 ### Fehlerbehandlung und Validierung
 
-Die Anwendung validiert alle eingehenden Daten, bevor sie in der Datenbank gespeichert werden. Fehlerhafte Anfragen werden mit entsprechenden HTTP-Statuscodes und beschreibenden Fehlermeldungen beantwortet, um dem Benutzer eine klare Rückmeldung zu geben.
+Die Anwendung validiert alle eingehenden Daten, bevor sie in der Datenbank gespeichert werden. Fehlerhafte Anfragen werden mit entsprechenden HTTP-Statuscodes und beschreibenden Fehlermeldungen beantwortet, um eine klare Rückmeldung zu geben.
 
 ## Abhängigkeiten
 
@@ -101,7 +123,7 @@ Stellen Sie sicher, dass alle Abhängigkeiten installiert sind, bevor Sie beginn
 
 5. **API-Endpunkte testen**
 
-   Verwenden Sie Postman oder cURL, um die API-Endpunkte zu testen. Beispiele für Testanfragen finden Sie im Abschnitt "REST-API Dokumentation".
+   Verwenden Sie Insomnia oder cURL, um die API-Endpunkte zu testen. Beispiele für Testanfragen finden Sie im Abschnitt "REST-API Dokumentation".
 
 ## Testplan
 
@@ -117,3 +139,5 @@ Die Entwicklung dieses Projekts bot viele Lernerfahrungen. Herausforderungen lag
 
 - Unterstützung und Feedback von Mitlernenden und Dozenten
 - Online-Ressourcen zur Konfiguration von Docker und Spring Boot
+- ChatGPT
+- Stack Overflow

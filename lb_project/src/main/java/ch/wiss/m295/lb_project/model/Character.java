@@ -1,13 +1,21 @@
 package ch.wiss.m295.lb_project.model;
 
+import org.springframework.validation.annotation.Validated;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
+@Table(name = "`character`")  // Use backticks to escape the table name
+@Validated
 public class Character {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty(message = "Character needs to have a name.")
     private String name;
+
     private int itemLevel;
     private String characterClass;
 
@@ -67,15 +75,15 @@ public class Character {
         this.guardian = guardian;
     }
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "raid_id")
     private Raid raid;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "dungeon_id")
     private Dungeon dungeon;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "guardian_id")
     private Guardian guardian;
 }
